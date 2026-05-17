@@ -1,0 +1,31 @@
+name: Announce Release on Discord
+
+# Posts a formatted embed to a Discord channel webhook when a release here on
+# the mirror is published (i.e. the maintainer clicks "Publish release" on the
+# draft created by the source repo's release.yml). The build pipeline lives in
+# andarwalker/order-tracker-project and is not touched by this workflow.
+#
+# Required repo configuration on this mirror repo:
+#   - Secret:   DISCORD_RELEASE_WEBHOOK_URL  (Discord channel webhook URL)
+#   - Variable: DISCORD_RELEASE_ROLE_ID      (optional — role ID to ping)
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Post release embed to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_RELEASE_WEBHOOK_URL }}
+          DISCORD_RELEASE_ROLE_ID: ${{ vars.DISCORD_RELEASE_ROLE_ID }}
+          RELEASE_JSON: ${{ toJson(github.event.release) }}
+        run: node .github/scripts/announce-release.mjs
