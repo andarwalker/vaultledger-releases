@@ -2,7 +2,9 @@
 
 **Effective:** 2026-05-17 · **Applies to:** VaultLedger desktop, closed beta `v0.1.x`
 
-VaultLedger is a **local-first** desktop app. The architectural intent — codified in [ADR-002](https://github.com/andarwalker/vaultledger-releases) and enforced in the app's design — is that your purchase history, email content, and financial data live on your device and nowhere else.
+> This is a closed-beta privacy notice. It will be revised before any general-availability release. The version that applies to you is the one in effect at the time you install or update the app.
+
+VaultLedger is a **local-first** desktop app. By design, your purchase history, email content, and financial data live on your device and nowhere else. This document describes the narrow set of data the app does send to VaultLedger's servers and what it does not.
 
 ## What stays on your device
 
@@ -43,7 +45,7 @@ If a crash occurs and you have crash reporting enabled in **Settings → Privacy
 - The app version, OS family, and OS version.
 - A non-identifying installation ID.
 
-Before sending, the report is run through a scrubber (`apps/desktop/src/lib/crashReporter/scrub.ts` in the source repo) that removes order IDs, email addresses, retailer names, and other commerce identifiers. You can disable crash reporting at any time in **Settings → Privacy → Crash reports**.
+Before sending, the report is run through a scrubber that removes order IDs, email addresses, retailer names, and other commerce identifiers. You can disable crash reporting at any time in **Settings → Privacy → Crash reports**.
 
 ## What we do not collect
 
@@ -76,8 +78,8 @@ The app has no third-party analytics, no advertising trackers, no telemetry SDKs
 ## Data retention
 
 - Local data: kept until you delete the app data folder or use **Settings → Data → Erase local database**.
-- License records on the server: retained while you are an active beta tester. Removed within 90 days of beta wind-down.
-- Crash reports: retained for 90 days for triage.
+- License records on the server: retained while your beta license is active and for a reasonable period after the closed beta ends. You can ask an admin in the beta Discord to delete your license record at any time.
+- Crash reports: retained while they are useful for triage and then deleted. We do not associate crash reports with your identity or license.
 
 ## Your controls
 
