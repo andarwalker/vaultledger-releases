@@ -56,7 +56,7 @@ const fields = [];
 
 if (winMsi) {
   fields.push({
-    name: 'Windows',
+    name: '🪟 Windows',
     value: `[Installer (.msi)](${winMsi.browser_download_url})`,
     inline: true,
   });
@@ -66,31 +66,32 @@ if (macArm || macIntel) {
   const lines = [];
   if (macArm) lines.push(`[Apple Silicon (.dmg)](${macArm.browser_download_url})`);
   if (macIntel) lines.push(`[Intel (.dmg)](${macIntel.browser_download_url})`);
-  fields.push({ name: 'macOS', value: lines.join('\n'), inline: true });
+  fields.push({ name: '🍎 macOS', value: lines.join('\n'), inline: true });
 }
 
 if (linuxAppImage || linuxDeb) {
   const lines = [];
   if (linuxAppImage) lines.push(`[AppImage](${linuxAppImage.browser_download_url})`);
   if (linuxDeb) lines.push(`[Debian (.deb)](${linuxDeb.browser_download_url})`);
-  fields.push({ name: 'Linux', value: lines.join('\n'), inline: true });
+  fields.push({ name: '🐧 Linux', value: lines.join('\n'), inline: true });
 }
 
 if (fields.length === 0) {
   fields.push({
-    name: 'Downloads',
+    name: '⬇️ Downloads',
     value: `[View release assets on GitHub →](${release.html_url})`,
     inline: false,
   });
 }
 
 const embed = {
-  title: `VaultLedger ${release.tag_name} released`,
+  author: { name: 'VaultLedger' },
+  title: `🚀 VaultLedger ${release.tag_name} — what's new`,
   url: release.html_url,
   description: truncateDescription(release.body, release.html_url),
   color: BRAND_COLOR,
   fields,
-  footer: { text: 'VaultLedger' },
+  footer: { text: 'VaultLedger · local-first purchase & resale tracking · auto-updates on next launch' },
   timestamp: release.published_at ?? new Date().toISOString(),
 };
 
