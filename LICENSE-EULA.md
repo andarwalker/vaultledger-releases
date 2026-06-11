@@ -1,6 +1,10 @@
 # VaultLedger Closed-Beta End-User License Agreement
 
-**Version:** 0.1.0 · **Effective:** 2026-05-17
+**Version:** 0.1.1 · **Effective:** 2026-06-10
+
+> **Canonical version:** <https://vaultledger.app/legal/eula>. This file is a synced copy.
+>
+> This Agreement governs the installed desktop application. Your VaultLedger account and the online licensing service are governed by the [Terms of Service](./TERMS.md).
 
 This End-User License Agreement (this "**Agreement**") is a binding agreement between you ("**you**" or "**Licensee**") and the operator of VaultLedger ("**we**", "**us**", or "**Licensor**") for the closed-beta release of the VaultLedger desktop application and any updates distributed through this repository (collectively, the "**Software**").
 
@@ -63,11 +67,11 @@ TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL LICENSOR BE 
 
 ## 10. Miscellaneous
 
-- **Entire agreement.** This Agreement, together with `PRIVACY.md`, is the entire agreement between you and Licensor regarding the Software and supersedes any prior agreement.
+- **Entire agreement.** This Agreement, together with the [Privacy Policy](./PRIVACY.md) and (for the account and licensing service) the [Terms of Service](./TERMS.md), is the entire agreement between you and Licensor regarding the Software and supersedes any prior agreement.
 - **Severability.** If any provision is held unenforceable, the remaining provisions remain in effect.
 - **No waiver.** Failure to enforce any provision is not a waiver.
 - **Assignment.** You may not assign this Agreement; Licensor may.
 - **Governing law.** This Agreement is governed by the laws of the jurisdiction in which Licensor resides, without regard to conflict-of-laws principles. Disputes are resolved in the courts of that jurisdiction.
 - **Updates to this Agreement.** Licensor may revise this Agreement for future releases. Continued use of the Software after a revised Agreement is published constitutes acceptance.
 
-For questions about this Agreement, contact an admin in the beta Discord.
+For questions about this Agreement, contact **vaultledger.app@gmail.com**.

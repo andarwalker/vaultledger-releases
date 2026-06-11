@@ -20,7 +20,10 @@ The desktop app polls `releases/latest/download/latest.json` from this repo on e
 
 ## Privacy + license
 
+Canonical versions live at [vaultledger.app/legal](https://vaultledger.app/legal/privacy); the copies here are kept in sync.
+
 - [`PRIVACY.md`](./PRIVACY.md) — what VaultLedger does and does not send to its servers.
+- [`TERMS.md`](./TERMS.md) — terms of service for the website and account/licensing service.
 - [`LICENSE-EULA.md`](./LICENSE-EULA.md) — closed-beta end-user license agreement governing the binaries in this repo.
 
 ## Reporting bugs
