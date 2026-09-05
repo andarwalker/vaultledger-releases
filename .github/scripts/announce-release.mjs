@@ -6,7 +6,11 @@
 //   DISCORD_RELEASE_ROLE_ID  optional — role ID to ping in message content
 //   RELEASE_JSON             required — toJson(github.event.release)
 
-const BRAND_COLOR = 0x6366f1; // indigo
+// The product accent. Kept in step with apps/web/src/styles/tokens.ts,
+// tools/discord-mcp/src/render/theme.ts, and apps/discord-bot/src/brand.ts in
+// the source repo, so a release post and a slash-command reply read as one
+// product. Was an unrelated indigo (0x6366f1) until the brand was unified.
+const BRAND_COLOR = 0xc4b5fd;
 const DESCRIPTION_LIMIT = 3800; // Discord hard cap is 4096; leave room for the "Read more" tail
 const READ_MORE_TAIL = (url) => `\n\n— [Read full notes →](${url})`;
 
@@ -56,7 +60,7 @@ const fields = [];
 
 if (winMsi) {
   fields.push({
-    name: '🪟 Windows',
+    name: 'Windows',
     value: `[Installer (.msi)](${winMsi.browser_download_url})`,
     inline: true,
   });
@@ -66,19 +70,19 @@ if (macArm || macIntel) {
   const lines = [];
   if (macArm) lines.push(`[Apple Silicon (.dmg)](${macArm.browser_download_url})`);
   if (macIntel) lines.push(`[Intel (.dmg)](${macIntel.browser_download_url})`);
-  fields.push({ name: '🍎 macOS', value: lines.join('\n'), inline: true });
+  fields.push({ name: 'macOS', value: lines.join('\n'), inline: true });
 }
 
 if (linuxAppImage || linuxDeb) {
   const lines = [];
   if (linuxAppImage) lines.push(`[AppImage](${linuxAppImage.browser_download_url})`);
   if (linuxDeb) lines.push(`[Debian (.deb)](${linuxDeb.browser_download_url})`);
-  fields.push({ name: '🐧 Linux', value: lines.join('\n'), inline: true });
+  fields.push({ name: 'Linux', value: lines.join('\n'), inline: true });
 }
 
 if (fields.length === 0) {
   fields.push({
-    name: '⬇️ Downloads',
+    name: 'Downloads',
     value: `[View release assets on GitHub →](${release.html_url})`,
     inline: false,
   });
@@ -86,12 +90,12 @@ if (fields.length === 0) {
 
 const embed = {
   author: { name: 'VaultLedger' },
-  title: `🚀 VaultLedger ${release.tag_name} — what's new`,
+  title: `VaultLedger ${release.tag_name}`,
   url: release.html_url,
   description: truncateDescription(release.body, release.html_url),
   color: BRAND_COLOR,
   fields,
-  footer: { text: 'VaultLedger · local-first purchase & resale tracking · auto-updates on next launch' },
+  footer: { text: 'VaultLedger updates on next launch, or check Settings → Updates.' },
   timestamp: release.published_at ?? new Date().toISOString(),
 };
 
@@ -101,7 +105,7 @@ const payload = {
 };
 
 if (roleId) {
-  payload.content = `<@&${roleId}> New release available!`;
+  payload.content = `<@&${roleId}> A new VaultLedger build is out.`;
 }
 
 let res;
